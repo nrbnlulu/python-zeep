@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       max-parallel: 4
       matrix:
+        python-version: [3.12]
         platform: [ubuntu-latest]
 
     steps:
@@ -24,10 +25,6 @@ jobs:
         brew install libxmlsec1 libxslt pkgconfig
  
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
     - name: Set up rye
       uses: atu4403/setup-rye-multiOS@v1
     - name: Sync dependencies using rye
