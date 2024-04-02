@@ -260,7 +260,6 @@ class CachingClient(Client):
     """
 
     def __init__(self, *args, **kwargs):
-
         # Don't use setdefault since we want to lazily init the Transport cls
         from zeep.cache import SqliteCache
 
