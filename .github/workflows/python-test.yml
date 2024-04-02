@@ -28,10 +28,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Set up rye
+      uses: atu4403/setup-rye-multiOS@v1
+    - name: Sync dependencies using rye
       run: |
-        python -m pip install --upgrade pip
-        curl -sSf https://rye-up.com/get | bash
+        rye pin ${{ matrix.python-version }}
         rye sync
 
     - name: Test with pytest
